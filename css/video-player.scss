@@ -1,0 +1,19 @@
+.player-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+}
+
+.react-player {
+  width: 100%;
+  height: 100%;
+}
+
+.vjs-big-play-button {
+  position: absolute !important;
+  top: 238px !important;
+  left: 113px !important;
+}

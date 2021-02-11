@@ -1,0 +1,19 @@
+# OS cache files
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Build directories
+dist/
+.next/
+.linaria-cache/
+
+# Error files
+yarn-error.log
+
+# Project settings
+.vscode
+.now
+.env
+.vercel

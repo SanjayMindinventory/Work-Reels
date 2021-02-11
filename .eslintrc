@@ -1,0 +1,65 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "experimentalDecorators": true,
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "prettier"],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/prop-types": 0,
+    "max-len": [
+      "off",
+      {
+        "code": 80,
+        "tabWidth": 2,
+        "ignoreUrls": true
+      }
+    ],
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "quotes": [2, "single", { "avoidEscape": true }],
+    "semi": ["error", "never"],
+    "standard/no-callback-literal": "off",
+    "jsx-quotes": ["error", "prefer-single"],
+    "space-before-function-paren": [
+      "error",
+      { "anonymous": "ignore", "named": "never", "asyncArrow": "always" }
+    ],
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": ["off"],
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 80,
+        "semi": false,
+        "trailingComma": "all",
+        "singleQuote": true,
+        "tabWidth": 2,
+        "arrowParens": "always",
+        "jsxBracketSameLine": false,
+        "jsxSingleQuote": true
+      }
+    ]
+  }
+}

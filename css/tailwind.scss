@@ -1,0 +1,18 @@
+:root {
+  --green: #278282;
+  --gray-6: #11131b;
+  --primary: var(--green);
+}
+
+/* purgecss start ignore */
+@import '~tailwindcss/base';
+
+@import '~tailwindcss/components';
+/* purgecss end ignore */
+
+@import '~tailwindcss/utilities';
+
+html,
+body {
+  font-family: 'Nunito', sans-serif !important;
+}
