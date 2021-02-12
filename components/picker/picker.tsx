@@ -1,4 +1,5 @@
 import React from 'react'
+// @ts-ignore
 import { PickerInline } from 'filestack-react'
 import { FILESTACK_API_KEY, workflowId } from 'lib/constants'
 
