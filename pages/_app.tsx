@@ -6,7 +6,6 @@ import {
   HttpLink,
   from,
   split,
-  gql,
 } from '@apollo/client'
 import { WebSocketLink } from '@apollo/client/link/ws'
 import { getMainDefinition } from 'apollo-utilities'
