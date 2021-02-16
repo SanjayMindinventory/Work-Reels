@@ -33,31 +33,31 @@ class App extends NextApp<Props> {
   }
 
   componentDidMount() {
-    // if ('serviceWorker' in navigator) {
-    //   window.addEventListener('load', function () {
-    //     navigator.serviceWorker.register('./sw.js').then(
-    //       function (registration) {
-    //         console.log(
-    //           'Service Worker registration successful with scope: ',
-    //           registration.scope,
-    //         )
-    //       },
-    //       function (err) {
-    //         console.log('Service Worker registration failed: ', err)
-    //       },
-    //     )
-    //   })
-    //   window.addEventListener('beforeinstallprompt', (e) => {
-    //     console.log('callll this beforeinstallprompt')
-    //     e.preventDefault()
-    //     this.setState({
-    //       deferredPrompt: e,
-    //     })
-    //     // Update UI notify the user they can install the PWA
-    //     // showInstallPromotion();
-    //     console.log("'beforeinstallprompt' event was fired.")
-    //   })
-    // }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').then(
+          function (registration) {
+            console.log(
+              'Service Worker registration successful with scope: ',
+              registration.scope,
+            )
+          },
+          function (err) {
+            console.log('Service Worker registration failed: ', err)
+          },
+        )
+      })
+      window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('callll this beforeinstallprompt')
+        // e.preventDefault()
+        this.setState({
+          deferredPrompt: e,
+        })
+        // Update UI notify the user they can install the PWA
+        // showInstallPromotion();
+        console.log("'beforeinstallprompt' event was fired.")
+      })
+    }
   }
   render(): JSX.Element {
     const { Component, pageProps, apollo } = this.props
