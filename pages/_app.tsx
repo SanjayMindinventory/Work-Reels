@@ -28,6 +28,10 @@ interface Props {
 }
 
 class App extends NextApp<Props> {
+  state = {
+    deferredPrompt: null,
+  }
+
   componentDidMount() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
@@ -44,6 +48,16 @@ class App extends NextApp<Props> {
         )
       })
     }
+    window.addEventListener('beforeinstallprompt', (e) => {
+      console.log('callll this beforeinstallprompt')
+      e.preventDefault()
+      this.setState({
+        deferredPrompt: e,
+      })
+      // Update UI notify the user they can install the PWA
+      // showInstallPromotion();
+      console.log("'beforeinstallprompt' event was fired.")
+    })
   }
   render(): JSX.Element {
     const { Component, pageProps, apollo } = this.props
