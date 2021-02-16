@@ -47,17 +47,17 @@ class App extends NextApp<Props> {
           },
         )
       })
-    }
-    window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('callll this beforeinstallprompt')
-      e.preventDefault()
-      this.setState({
-        deferredPrompt: e,
+      window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('callll this beforeinstallprompt')
+        e.preventDefault()
+        this.setState({
+          deferredPrompt: e,
+        })
+        // Update UI notify the user they can install the PWA
+        // showInstallPromotion();
+        console.log("'beforeinstallprompt' event was fired.")
       })
-      // Update UI notify the user they can install the PWA
-      // showInstallPromotion();
-      console.log("'beforeinstallprompt' event was fired.")
-    })
+    }
   }
   render(): JSX.Element {
     const { Component, pageProps, apollo } = this.props
