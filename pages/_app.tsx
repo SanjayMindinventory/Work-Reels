@@ -28,6 +28,9 @@ interface Props {
 }
 
 class App extends NextApp<Props> {
+  state = {
+    deferredPrompt: null,
+  }
   componentDidMount() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
@@ -43,8 +46,11 @@ class App extends NextApp<Props> {
           },
         )
       })
-      window.addEventListener('beforeinstallprompt', () => {
+      window.addEventListener('beforeinstallprompt', (e) => {
         console.log("'beforeinstallprompt' event was fired.")
+        this.setState({
+          deferredPrompt: e,
+        })
       })
     }
   }
@@ -52,6 +58,7 @@ class App extends NextApp<Props> {
     const { Component, pageProps, apollo } = this.props
     return (
       <ApolloProvider client={apollo}>
+        {console.log('calll', this.state.deferredPrompt)}
         <ChakraProvider>
           <Component {...pageProps} />
         </ChakraProvider>
