@@ -58,9 +58,11 @@ class App extends NextApp<Props> {
     const { Component, pageProps, apollo } = this.props
     return (
       <ApolloProvider client={apollo}>
-        {console.log('calll', this.state.deferredPrompt)}
         <ChakraProvider>
-          <Component {...pageProps} />
+          <Component
+            {...pageProps}
+            deferredPrompt={this.state.deferredPrompt}
+          />
         </ChakraProvider>
       </ApolloProvider>
     )

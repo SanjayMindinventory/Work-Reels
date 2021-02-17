@@ -21,6 +21,14 @@ import {
   Checkbox,
   useToast,
   Spinner,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
 } from '@chakra-ui/react'
 import { IoAdd, IoInformation, IoClose, IoCheckmark } from 'react-icons/io5'
 import { GetOrgMedias, GetOrgMediasVariables } from 'lib/graphql/types'
@@ -40,10 +48,12 @@ import cn from 'classnames'
 import Link from 'next/link'
 import { Pages } from 'components/nav/pages'
 import { withAuth } from 'utils/with-auth'
+import { AddIcon } from '@chakra-ui/icons'
 
 const DEBOUNCE_STATUS = 700
 
-const Videos: NextPage<unknown> = (props) => {
+const Videos: NextPage<unknown> = (props: any) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const isAdmin = useIsAdminUser()
   const userInfo = useUserSession()
   const userOrgId = useMemo(() => userInfo?.orgAdmin?.id, [userInfo])
@@ -116,6 +126,7 @@ const Videos: NextPage<unknown> = (props) => {
 
   return (
     <Layout>
+      {console.log('call props', props)}
       <Head title='Videos | WorkReels' />
       <div className='max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8'>
         <div className='space-y-12'>
@@ -161,6 +172,29 @@ const Videos: NextPage<unknown> = (props) => {
                 </PopoverContent>
               </Portal>
             </Popover>
+            <Button onClick={onOpen}>PWA</Button>
+            <Modal onClose={onClose} isCentered isOpen={isOpen}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Modal Title</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <AddIcon
+                    onClick={() => {
+                      props.deferredPrompt.prompt()
+                      const { outcome } = props.deferredPrompt.userChoice
+                      console.log(
+                        `User response to the install prompt: ${outcome}`,
+                      )
+                    }}
+                  />{' '}
+                  please add in your phone
+                </ModalBody>
+                <ModalFooter>
+                  <Button onClick={onClose}>Close</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
           </div>
           {userInfo ? (
             isAdmin ? (
