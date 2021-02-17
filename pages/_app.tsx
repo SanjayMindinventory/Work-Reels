@@ -43,6 +43,9 @@ class App extends NextApp<Props> {
           },
         )
       })
+      window.addEventListener('beforeinstallprompt', () => {
+        console.log("'beforeinstallprompt' event was fired.")
+      })
     }
   }
   render(): JSX.Element {
