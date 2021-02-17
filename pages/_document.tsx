@@ -47,7 +47,7 @@ export default class Document extends NextDocument {
               text-align: center;
             }
             `}</style>
-          <title>Work Reels</title>
+          {/*<title>Work Reels</title>*/}
         </Head>
         <script
           dangerouslySetInnerHTML={{
