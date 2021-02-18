@@ -47,10 +47,17 @@ class App extends NextApp<Props> {
         )
       })
       window.addEventListener('beforeinstallprompt', (e) => {
-        console.log("'beforeinstallprompt' event was fired.")
+        e.preventDefault()
         this.setState({
           deferredPrompt: e,
         })
+      })
+      window.addEventListener('appinstalled', () => {
+        this.setState({
+          deferredPrompt: null,
+        })
+        // Optionally, send analytics event to indicate successful install
+        console.log('PWA was installed')
       })
     }
   }
@@ -62,6 +69,9 @@ class App extends NextApp<Props> {
           <Component
             {...pageProps}
             deferredPrompt={this.state.deferredPrompt}
+            setDeferredPrompt={this.setState({
+              deferredPrompt: null,
+            })}
           />
         </ChakraProvider>
       </ApolloProvider>

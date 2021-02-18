@@ -127,7 +127,6 @@ const Videos: NextPage<unknown> = (props: any) => {
 
   return (
     <Layout>
-      {console.log('call props', props)}
       <Head title='Videos | WorkReels' />
       <div className='max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8'>
         <div className='space-y-12'>
@@ -201,6 +200,7 @@ const Videos: NextPage<unknown> = (props: any) => {
                       color='blue.600'
                       onClick={() => {
                         props.deferredPrompt.prompt()
+                        props.setDeferredPrompt()
                         const { outcome } = props.deferredPrompt.userChoice
                       }}
                     />{' '}
