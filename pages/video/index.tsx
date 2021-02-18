@@ -29,6 +29,9 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
+  Heading,
+  Text,
+  Image,
 } from '@chakra-ui/react'
 import { IoAdd, IoInformation, IoClose, IoCheckmark } from 'react-icons/io5'
 import { GetOrgMedias, GetOrgMediasVariables } from 'lib/graphql/types'
@@ -48,7 +51,7 @@ import cn from 'classnames'
 import Link from 'next/link'
 import { Pages } from 'components/nav/pages'
 import { withAuth } from 'utils/with-auth'
-import { AddIcon } from '@chakra-ui/icons'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 const DEBOUNCE_STATUS = 700
 
@@ -176,23 +179,38 @@ const Videos: NextPage<unknown> = (props: any) => {
             <Modal onClose={onClose} isCentered isOpen={isOpen}>
               <ModalOverlay />
               <ModalContent>
-                <ModalHeader>Modal Title</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody>
-                  <AddIcon
-                    onClick={() => {
-                      props.deferredPrompt.prompt()
-                      const { outcome } = props.deferredPrompt.userChoice
-                      console.log(
-                        `User response to the install prompt: ${outcome}`,
-                      )
-                    }}
-                  />{' '}
-                  please add in your phone
+                <ModalBody className='text-center'>
+                  <Image
+                    className='mx-auto my-3'
+                    boxSize='100px'
+                    objectFit='cover'
+                    src='gibbresh.png'
+                    fallbackSrc='https://via.placeholder.com/150'
+                  />
+                  <Heading as='h3' size='lg'>
+                    Install Workreels
+                  </Heading>
+                  <Text className='my-3' fontSize='lg'>
+                    Install this application on your home screen for quick and
+                    easy access when you&apos;re on the go.
+                  </Text>
+
+                  <Text fontSize='lg'>
+                    Just tap{' '}
+                    <ExternalLinkIcon
+                      color='blue.600'
+                      onClick={() => {
+                        props.deferredPrompt.prompt()
+                        const { outcome } = props.deferredPrompt.userChoice
+                        console.log(
+                          `User response to the install prompt: ${outcome}`,
+                        )
+                      }}
+                    />{' '}
+                    then &apos;Add to Home Screen&apos;
+                  </Text>
                 </ModalBody>
-                <ModalFooter>
-                  <Button onClick={onClose}>Close</Button>
-                </ModalFooter>
               </ModalContent>
             </Modal>
           </div>
