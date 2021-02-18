@@ -69,9 +69,6 @@ class App extends NextApp<Props> {
           <Component
             {...pageProps}
             deferredPrompt={this.state.deferredPrompt}
-            setDeferredPrompt={this.setState({
-              deferredPrompt: null,
-            })}
           />
         </ChakraProvider>
       </ApolloProvider>

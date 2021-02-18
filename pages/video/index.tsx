@@ -200,7 +200,6 @@ const Videos: NextPage<unknown> = (props: any) => {
                       color='blue.600'
                       onClick={() => {
                         props.deferredPrompt.prompt()
-                        props.setDeferredPrompt()
                         const { outcome } = props.deferredPrompt.userChoice
                       }}
                     />{' '}
