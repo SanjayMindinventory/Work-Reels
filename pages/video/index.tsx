@@ -4,7 +4,6 @@ import { NextPage } from 'next'
 import Layout from 'components/layout/layout'
 import { MUTATION, QUERY } from 'lib/graphql'
 import { useMutation, useQuery } from '@apollo/client'
-import ReactPlayer from 'react-player'
 import {
   Box,
   SkeletonText,
@@ -24,7 +23,6 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
   ModalFooter,
@@ -183,9 +181,9 @@ const Videos: NextPage<unknown> = (props: any) => {
                 <ModalBody className='text-center'>
                   <Image
                     className='mx-auto my-3'
-                    boxSize='100px'
+                    boxSize='80px'
                     objectFit='cover'
-                    src='gibbresh.png'
+                    src='icons/apple-touch-icon.png'
                     fallbackSrc='https://via.placeholder.com/150'
                   />
                   <Heading as='h3' size='lg'>
@@ -195,22 +193,20 @@ const Videos: NextPage<unknown> = (props: any) => {
                     Install this application on your home screen for quick and
                     easy access when you&apos;re on the go.
                   </Text>
-
-                  <Text fontSize='lg'>
+                </ModalBody>
+                <ModalFooter bg='gray.100'>
+                  <Text w='100%' className='text-center' fontSize='lg'>
                     Just tap{' '}
                     <ExternalLinkIcon
                       color='blue.600'
                       onClick={() => {
                         props.deferredPrompt.prompt()
                         const { outcome } = props.deferredPrompt.userChoice
-                        console.log(
-                          `User response to the install prompt: ${outcome}`,
-                        )
                       }}
                     />{' '}
                     then &apos;Add to Home Screen&apos;
                   </Text>
-                </ModalBody>
+                </ModalFooter>
               </ModalContent>
             </Modal>
           </div>
